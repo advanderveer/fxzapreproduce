@@ -1,8 +1,6 @@
 package main
 
 import (
-	"os"
-
 	"github.com/advanderveer/fxzapreproduce/log2"
 	"github.com/advanderveer/fxzapreproduce/sink2"
 
@@ -26,6 +24,6 @@ func main() {
 // FxLogger is a convenient option that configures fx to use the zap logger.
 func FxLogger() fx.Option {
 	return fx.WithLogger(func(l *zap.Logger) fxevent.Logger {
-		return &fxevent.ConsoleLogger{W: os.Stderr}
+		return &fxevent.ZapLogger{Logger: l}
 	})
 }
